@@ -16,7 +16,7 @@ void CreateSlots(St_Reservation **head);
 
 void main(){
 	
-	u16 user_choice, admin_choice, n;
+	u16 user_choice, admin_choice, choice;
 	St_Patient *h=NULL;
 	St_Reservation *s=NULL;
 	f32 slot;
@@ -25,9 +25,8 @@ void main(){
 	
 	/*declaring flag to exit from the system 
 	after entering wrong password for 3 times*/
-	int flag=2;
+	u16 flag=2;
 	
-	/*calling function to create timeslots list*/
 	CreateSlots(&s);
 	
 	while(1){
@@ -47,7 +46,7 @@ void main(){
 					scanf("%d",&pass);
 					
 					/*loop to allow the admin to try only 3 times for the password*/
-					for(int i=0;i<3;i++){
+					for(u16 i=0;i<3;i++){
 						if(pass==1234){
 							printf("\n  ***** WELCOME *****\n");
 							flag=1;
@@ -124,10 +123,10 @@ void main(){
 										if(CheckReservation(&s,p_id)==1){
 											printf("This patient already has a reservation\n");
 											printf("\nEnter 1 if you want to cancel old reservation and make new reservation\nEnter 2 to cancel operation\n");
-											scanf("%d",&n);
+											scanf("%d",&choice);
 											
 											/*Change the old reservation if the patient wants to change it*/
-											if(n==1){
+											if(choice==1){
 												CancelReservation(&s,p_id);
 											}
 											
